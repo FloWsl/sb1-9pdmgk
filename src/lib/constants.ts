@@ -14,7 +14,7 @@ export const POWER_FORMULA = {
   a: 2.1826, // Numerator constant
   b: 1.27, // Level adjustment
   c: 0.9809, // Base multiplier
-  starIncrease: 0.9, // 9% per star
+  starIncrease: 0.09, // 9% per star
 } as const;
 
 export const RARITY_NAMES = {
