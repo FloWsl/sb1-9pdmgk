@@ -42,9 +42,17 @@ export default function App() {
   return (
     <div className="min-h-screen bg-galaxy-950 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-galaxy-900 via-galaxy-950 to-galaxy-950">
       <div className="max-w-5xl mx-auto px-4 py-12">
-        <div className="flex items-center gap-3 mb-8">
-          <Calculator className="w-8 h-8 text-galaxy-300" />
-          <h1 className="text-3xl font-bold text-white">Hero Calculator</h1>
+        <div className="flex flex-col items-center mb-12">
+          <img 
+            src="https://res.cloudinary.com/archeillustree/image/upload/c_crop,w_750,h_750,ar_1:1/v1733072618/GotchiStats3_logo_500.webp"
+            alt="Gotchi Stats Logo"
+            className="w-24 h-24 mb-4"
+          />
+          <h1 className="text-4xl font-bold text-white text-center mb-2">Gotchi Stats</h1>
+          <div className="flex items-center gap-2 text-galaxy-300">
+            <Calculator className="w-5 h-5" />
+            <span className="text-lg">Hero Calculator</span>
+          </div>
         </div>
 
         <HeroForm
@@ -58,6 +66,10 @@ export default function App() {
           <PowerDisplay stats={state} />
           <CostDisplay stats={state} />
         </div>
+
+        <footer className="mt-12 text-center text-galaxy-300">
+          <p>Brought to you with 💜 by <a href="https://twitter.com/Flowz" className="text-galaxy-100 hover:text-galaxy-200 transition-colors">@Flowz</a> and <a href="https://twitter.com/VamonosPest" className="text-galaxy-100 hover:text-galaxy-200 transition-colors">@VamonosPest</a></p>
+        </footer>
       </div>
     </div>
   );
