@@ -68,7 +68,7 @@ export default function App() {
         </div>
 
         <footer className="mt-12 text-center text-galaxy-300">
-          <p>Brought to you with 💜 by <a href="https://twitter.com/Flowz" className="text-galaxy-100 hover:text-galaxy-200 transition-colors">@Flowz</a> and <a href="https://twitter.com/VamonosPest" className="text-galaxy-100 hover:text-galaxy-200 transition-colors">@VamonosPest</a></p>
+          <p>Brought to you with 💜 by <a href="https://twitter.com/Flowz" className="text-galaxy-100 hover:text-galaxy-200 transition-colors">@Flowz</a> and the kind support of <a href="https://twitter.com/VamonosPest" className="text-galaxy-100 hover:text-galaxy-200 transition-colors">@VamonosPest</a></p>
         </footer>
       </div>
     </div>
