@@ -13,7 +13,7 @@ export function TeamMetricsPanel({ metrics }: TeamMetricsPanelProps) {
   const isEfficient = efficiency > averageEfficiency;
   
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
       <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
         <div className="flex items-center gap-2 text-galaxy-300 mb-4">
           <Sigma className="w-5 h-5" />
