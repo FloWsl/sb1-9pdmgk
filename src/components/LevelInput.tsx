@@ -31,7 +31,7 @@ export function LevelInput({ level, onChange }: LevelInputProps) {
 
   return (
     <div>
-      <label className="block text-sm font-medium mb-2">Level</label>
+      <label className="block text-sm font-medium text-galaxy-50 mb-2">Level</label>
       <div className="flex items-center gap-2">
         <button
           onClick={handleDecrement}
