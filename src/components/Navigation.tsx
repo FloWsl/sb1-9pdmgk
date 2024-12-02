@@ -29,7 +29,7 @@ export function Navigation() {
               }`}
             >
               <Calculator className="w-4 h-4" />
-              <span>Individual Calculator</span>
+              <span>Hero</span>
             </Link>
             
             <Link
@@ -41,7 +41,7 @@ export function Navigation() {
               }`}
             >
               <Users className="w-4 h-4" />
-              <span>Team Calculator</span>
+              <span>Team</span>
             </Link>
           </div>
         </div>
