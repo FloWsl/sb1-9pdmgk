@@ -97,7 +97,7 @@ export function TeamCalculator() {
           </div>
 
           {teamMetrics && (
-             <><h2 className="text-2xl font-bold text-galaxy-400 mb-6">Statitics</h2><div className="lg:col-span-1">
+             <><h2 className="text-2xl font-bold text-galaxy-400 mb-6 mt-6">Statitics</h2><div className="lg:col-span-1">
 <TeamMetricsPanel metrics={teamMetrics} />
 </div></>
           )}
