@@ -30,16 +30,23 @@ export function HeroGrid({
           }`}
         >
           {hero ? (
-            <div className="bg-galaxy-900/50 backdrop-blur-sm p-6 rounded-xl border border-galaxy-700/50">
+            <div className={`${
+              hero.rarity === 2
+                ? 'bg-yellow-500/10 border border-yellow-600/50'
+                : hero.rarity === 1
+                ? 'bg-purple-500/10 border border-purple-600/50'
+                : 'bg-blue-500/10 border border-blue-500/50'
+            } backdrop-blur-sm p-6 rounded-xl`}>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${
-                      hero.rarity === 2 ? 'bg-yellow-400' :
-                      hero.rarity === 1 ? 'bg-purple-400' :
-                      'bg-blue-400'
-                    }`} />
-                    <span className="text-galaxy-300 font-medium">
+                    <span className={`${
+                        hero.rarity === 2
+                          ? 'text-yellow-400/80'
+                          : hero.rarity === 1
+                          ? 'text-purple-400/80'
+                          : 'text-blue-400/80'
+                      } font-medium`}>
                       {RARITY_NAMES[hero.rarity]}
                     </span>
                   </div>
@@ -81,11 +88,15 @@ export function HeroGrid({
                   <div className="flex items-center gap-4">
                     <div>
                       <span className="text-galaxy-400">Level</span>
-                      <div className="text-galaxy-100 font-medium">{hero.level}</div>
+                      <div className="text-galaxy-100 font-medium">
+                        {hero.level}
+                      </div>
                     </div>
                     <div>
                       <span className="text-galaxy-400">Stars</span>
-                      <div className="text-galaxy-100 font-medium">⭐ {hero.stars}</div>
+                      <div className="text-galaxy-100 font-medium">
+                        ⭐ {hero.stars}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-1 text-galaxy-300">
