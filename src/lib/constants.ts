@@ -1,7 +1,7 @@
 export const RARITY_BASE_POWER = {
-  0: 28, // Rare
+  0: 27.5, // Rare
   1: 34, // Epic
-  2: 41, // Legendary
+  2: 41.25, // Legendary
 } as const;
 
 export const SYSTEM_LIMITS = {
