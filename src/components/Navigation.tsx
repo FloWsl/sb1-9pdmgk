@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link, useRouter } from '@tanstack/react-router';
+import { Link, useMatchRoute } from '@tanstack/react-router';
 import { Calculator, Users } from 'lucide-react';
 
 export function Navigation() {
-  const router = useRouter();
-  const pathname = router.state.location.pathname;
+  const matchRoute = useMatchRoute();
+  const isHomeRoute = matchRoute({ to: '/' });
+  const isTeamRoute = matchRoute({ to: '/team' });
 
   return (
     <nav className="fixed top-0 left-0 right-0 h-15 bg-galaxy-900/95 backdrop-blur-sm border-b border-galaxy-700/50 z-50">
-      <div className="max-w-5xl mx-auto px-4 h-full">
+      <div className="max-w-4xl mx-auto px-4 h-full">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
             <img
@@ -18,12 +19,12 @@ export function Navigation() {
             />
             <span className="text-white font-bold text-lg">Gotchi Stats</span>
           </div>
-          
+
           <div className="flex gap-4">
             <Link
               to="/"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                pathname === '/'
+                isHomeRoute
                   ? 'bg-button-gradient text-white shadow-button'
                   : 'text-galaxy-300 hover:bg-galaxy-800/50'
               }`}
@@ -31,11 +32,11 @@ export function Navigation() {
               <Calculator className="w-4 h-4" />
               <span>Hero</span>
             </Link>
-            
+
             <Link
               to="/team"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                pathname === '/team'
+                isTeamRoute
                   ? 'bg-button-gradient text-white shadow-button'
                   : 'text-galaxy-300 hover:bg-galaxy-800/50'
               }`}
