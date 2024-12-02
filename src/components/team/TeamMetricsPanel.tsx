@@ -49,10 +49,6 @@ export function TeamMetricsPanel({ metrics }: TeamMetricsPanelProps) {
           <span className="text-2xl font-bold text-galaxy-100">
             {formatEfficiency(efficiency)}
           </span>
-          <span className={`flex items-center text-sm ${isEfficient ? 'text-green-400' : 'text-red-400'}`}>
-            {isEfficient ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
-            {formatEfficiency(Math.abs(efficiency - averageEfficiency))}
-          </span>
         </div>
         <div className="mt-2 text-sm text-galaxy-400">
           Power per Gold Ratio
