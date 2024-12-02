@@ -19,7 +19,7 @@ export function HeroGrid({
   onRemove,
 }: HeroGridProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
       {heroes.map((hero, index) => (
         <div
           key={index}
