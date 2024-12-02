@@ -11,20 +11,23 @@ export function TeamCalculator() {
   const { rarity, stars, level, ...stats } = useCalculatorStore();
   const setValues = useCalculatorStore((state) => state.setValues);
   const reset = useCalculatorStore((state) => state.reset);
-  
-  const { 
-    heroes, 
-    isEditing, 
-    selectedHeroIndex, 
-    addHero, 
-    updateHero, 
+
+  const {
+    heroes,
+    isEditing,
+    selectedHeroIndex,
+    addHero,
+    updateHero,
     removeHero,
-    selectHero 
+    selectHero,
   } = useTeamStore();
-  
-  const activeHeroes = heroes.filter((hero): hero is NonNullable<typeof hero> => hero !== null);
-  const teamMetrics = activeHeroes.length > 0 ? calculateTeamMetrics(activeHeroes) : null;
-  
+
+  const activeHeroes = heroes.filter(
+    (hero): hero is NonNullable<typeof hero> => hero !== null
+  );
+  const teamMetrics =
+    activeHeroes.length > 0 ? calculateTeamMetrics(activeHeroes) : null;
+
   const handleAddToTeam = () => {
     const hero = {
       id: `hero-${Date.now()}`,
@@ -39,7 +42,7 @@ export function TeamCalculator() {
     } else {
       addHero(hero);
     }
-    
+
     reset();
   };
 
@@ -93,15 +96,15 @@ export function TeamCalculator() {
             </button>
           </div>
 
-          {teamMetrics && (
-            <div className="lg:col-span-1">
-              <TeamMetricsPanel metrics={teamMetrics} />
-            </div>
-          )}
+
+             <><h2 className="text-2xl font-bold text-galaxy-400 mb-6 mt-6">Statitics</h2><div className="lg:col-span-1">
+<TeamMetricsPanel metrics={teamMetrics} />
+</div></>
+          
         </div>
 
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-galaxy-400 mb-6">Your Team</h2>
+          <h2 className="text-2xl font-bold text-galaxy-400 mb-6">Composition</h2>
           <HeroGrid
             heroes={heroes}
             viewMode="SINGLE"
