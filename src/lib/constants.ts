@@ -5,7 +5,7 @@ export const RARITY_BASE_POWER = {
 } as const;
 
 export const SYSTEM_LIMITS = {
-  maxLevel: 100,
+  maxLevel: 200,
   maxStars: 15,
   maxRarity: 2,
 } as const;
