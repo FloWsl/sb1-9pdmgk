@@ -15,7 +15,10 @@ export interface HeroConfig {
 export interface TeamMetrics {
   totalPower: number;
   totalGoldSpent: number;
+  totalGemsSpent: number;
   averagePower: number;
+  averagePowerPerGold: number;
+  averagePowerPerGem: number;
   minPower: number;
   maxPower: number;
   heroCount: number;
@@ -23,17 +26,4 @@ export interface TeamMetrics {
     median: number;
     standardDeviation: number;
   };
-}
-
-export interface ComparisonMetrics {
-  powerDiff: number;
-  powerDiffPercent: number;
-  costEfficiencyRatio: number;
-  upgradeCostDiff: number;
-}
-
-export interface TeamState {
-  heroes: Array<HeroConfig | null>;
-  selectedHeroIndex: number | null;
-  viewMode: ViewMode;
 }

@@ -3,9 +3,11 @@ import type { HeroConfig, TeamMetrics } from '../types/team';
 export function calculateTeamMetrics(heroes: HeroConfig[]): TeamMetrics {
   const powers = heroes.map(hero => hero.metrics.currentPower);
   const goldSpent = heroes.map(hero => hero.metrics.totalGoldSpent);
+  const gemsSpent = heroes.map(hero => hero.metrics.totalGemsSpent);
   
   const totalPower = powers.reduce((sum, power) => sum + power, 0);
   const totalGoldSpent = goldSpent.reduce((sum, gold) => sum + gold, 0);
+  const totalGemsSpent = gemsSpent.reduce((sum, gems) => sum + gems, 0);
   const heroCount = heroes.length;
   
   // Sort powers for statistical calculations
@@ -14,7 +16,10 @@ export function calculateTeamMetrics(heroes: HeroConfig[]): TeamMetrics {
   return {
     totalPower,
     totalGoldSpent,
+    totalGemsSpent,
     averagePower: totalPower / heroCount,
+    averagePowerPerGold: totalPower / totalGoldSpent,
+    averagePowerPerGem: totalPower / totalGemsSpent,
     minPower: Math.min(...powers),
     maxPower: Math.max(...powers),
     heroCount,

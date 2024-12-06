@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Trash2, Edit, TrendingUp } from 'lucide-react';
+import { Plus, Trash2, Edit, TrendingUp, Coins, Gem } from 'lucide-react';
 import { ViewMode, HeroConfig } from '../../lib/types/team';
 import { RARITY_NAMES } from '../../lib/constants';
 import { formatNumber, formatEfficiency } from '../../lib/formatting';
@@ -77,9 +77,16 @@ export function HeroGrid({
                   </div>
 
                   <div>
-                    <div className="text-sm text-galaxy-400">Gold Spent</div>
-                    <div className="text-xl font-bold text-galaxy-100">
-                      {formatNumber(hero.metrics.totalGoldSpent)}
+                    <div className="text-sm text-galaxy-400">Resources</div>
+                    <div className="flex items-center gap-2 text-galaxy-100">
+                      <div className="flex items-center gap-1">
+                        <Coins className="w-3 h-3 text-yellow-400" />
+                        <span className="text-sm">{formatNumber(hero.metrics.totalGoldSpent)}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Gem className="w-3 h-3 text-green-400" />
+                        <span className="text-sm">{formatNumber(hero.metrics.totalGemsSpent)}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

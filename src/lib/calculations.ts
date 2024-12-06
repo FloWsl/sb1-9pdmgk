@@ -1,9 +1,8 @@
 import { RARITY_BASE_POWER, POWER_FORMULA, SYSTEM_LIMITS } from './constants';
 import { validateInputs } from './validation';
 import { calculateNextLevelCost, calculateTotalGoldSpent } from './costs';
+import { calculateLevelGemCost, calculateTotalGemsSpent } from './gems';
 import type { HeroParams, StrengthStats, HeroStats } from './types';
-
-
 
 export function calculateStarBonus(stars: number, rarity: number): number {
     const starBonuses = {
@@ -18,10 +17,7 @@ export function calculateStarBonus(stars: number, rarity: number): number {
 export function calculateStrength({ rarity, level, stars }: HeroParams): StrengthStats {
     validateInputs({ rarity, level, stars });
     
-    // Calculate base strength with star bonus first
     let baseStrength = RARITY_BASE_POWER[rarity] + calculateStarBonus(stars, rarity);
-    
-    // Then apply level scaling
     let currentPower = baseStrength * Math.pow(level, 2);
     
     let nextLevelPower = null;
@@ -46,14 +42,18 @@ export function calculateHeroStats({
   stars,
 }: HeroParams): HeroStats {
   const strengthStats = calculateStrength({ rarity, level, stars });
-  const nextLevelCost =
-    level < SYSTEM_LIMITS.maxLevel ? calculateNextLevelCost(level) : null;
+  const nextLevelCost = level < SYSTEM_LIMITS.maxLevel ? calculateNextLevelCost(level) : null;
+  const nextLevelGems = level < SYSTEM_LIMITS.maxLevel ? calculateLevelGemCost(level) : null;
   const totalGoldSpent = calculateTotalGoldSpent(level);
+  const totalGemsSpent = calculateTotalGemsSpent(level);
 
   return {
     ...strengthStats,
     nextLevelCost,
+    nextLevelGems,
     totalGoldSpent,
+    totalGemsSpent,
     powerPerGold: strengthStats.currentPower / totalGoldSpent,
+    powerPerGem: strengthStats.currentPower / totalGemsSpent,
   };
 }

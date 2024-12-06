@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sigma, TrendingUp, Coins, BarChart3, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { Sigma, TrendingUp, Coins, Gem, BarChart3 } from 'lucide-react';
 import { TeamMetrics } from '../../lib/types/team';
 import { formatNumber, formatEfficiency } from '../../lib/formatting';
 
@@ -8,10 +8,6 @@ interface TeamMetricsPanelProps {
 }
 
 export function TeamMetricsPanel({ metrics }: TeamMetricsPanelProps) {
-  const efficiency = metrics.totalPower / metrics.totalGoldSpent;
-  const averageEfficiency = metrics.averagePower / (metrics.totalGoldSpent / metrics.heroCount);
-  const isEfficient = efficiency > averageEfficiency;
-  
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
       <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
@@ -30,28 +26,42 @@ export function TeamMetricsPanel({ metrics }: TeamMetricsPanelProps) {
       <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
         <div className="flex items-center gap-2 text-galaxy-300 mb-4">
           <Coins className="w-5 h-5" />
-          <h3 className="font-semibold">Total Gold</h3>
+          <h3 className="font-semibold">Resources</h3>
         </div>
-        <div className="text-2xl font-bold text-galaxy-100">
-          {formatNumber(metrics.totalGoldSpent)}
-        </div>
-        <div className="mt-2 text-sm text-galaxy-400">
-          Per Hero: {formatNumber(metrics.totalGoldSpent / metrics.heroCount)}
+        <div className="space-y-2">
+          <div>
+            <div className="text-sm text-galaxy-400">Total Gold</div>
+            <div className="text-xl font-bold text-galaxy-100">
+              {formatNumber(metrics.totalGoldSpent)}
+            </div>
+          </div>
+          <div>
+            <div className="text-sm text-galaxy-400">Total Gems</div>
+            <div className="text-xl font-bold text-galaxy-100">
+              {formatNumber(metrics.totalGemsSpent)}
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
         <div className="flex items-center gap-2 text-galaxy-300 mb-4">
           <TrendingUp className="w-5 h-5" />
-          <h3 className="font-semibold">Team Efficiency</h3>
+          <h3 className="font-semibold">Efficiency</h3>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-galaxy-100">
-            {formatEfficiency(efficiency)}
-          </span>
-        </div>
-        <div className="mt-2 text-sm text-galaxy-400">
-          Power per Gold Ratio
+        <div className="space-y-2">
+          <div>
+            <div className="text-sm text-galaxy-400">Power per Gold</div>
+            <div className="text-xl font-bold text-galaxy-100">
+              {formatEfficiency(metrics.averagePowerPerGold)}
+            </div>
+          </div>
+          <div>
+            <div className="text-sm text-galaxy-400">Power per Gem</div>
+            <div className="text-xl font-bold text-galaxy-100">
+              {formatEfficiency(metrics.averagePowerPerGem)}
+            </div>
+          </div>
         </div>
       </div>
 

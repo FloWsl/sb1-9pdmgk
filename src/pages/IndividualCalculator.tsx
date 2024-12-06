@@ -2,7 +2,7 @@ import React from 'react';
 import { Calculator } from 'lucide-react';
 import { HeroForm } from '../components/HeroForm';
 import { PowerDisplay } from '../components/PowerDisplay';
-import { CostDisplay } from '../components/CostDisplay';
+import { ResourceDisplay } from '../components/ResourceDisplay';
 import { useCalculatorStore } from '../store/calculatorStore';
 
 export function IndividualCalculator() {
@@ -29,9 +29,9 @@ export function IndividualCalculator() {
           onChange={setValues}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <div className="space-y-4 mt-6">
           <PowerDisplay stats={stats} />
-          <CostDisplay stats={stats} />
+          <ResourceDisplay stats={stats} />
         </div>
       </div>
     </div>
