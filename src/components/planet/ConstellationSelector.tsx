@@ -26,7 +26,7 @@ export function ConstellationSelector() {
         <option value="">Select a constellation</option>
         {CONSTELLATION_DATA.map(constellation => (
           <option key={constellation.name} value={constellation.name}>
-            {constellation.name} (Power: {constellation.avgPower})
+            {constellation.order}.{constellation.name}
           </option>
         ))}
       </select>
