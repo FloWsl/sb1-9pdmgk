@@ -27,6 +27,9 @@ export default {
         'container-gradient':
           'linear-gradient(180deg, rgba(110, 58, 199, 0.15) 0%, rgba(135, 88, 209, 0.05) 100%)',
       },
+      animation: {
+        fadeIn: 'fadeIn 0.3s ease-out forwards',
+      },
     },
   },
   plugins: [],
