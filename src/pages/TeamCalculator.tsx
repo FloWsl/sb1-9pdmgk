@@ -112,7 +112,7 @@ export function TeamCalculator() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr,2fr] gap-8">
+        <div className="grid lg:grid-cols-[1fr,2fr] gap-8 ">
           <div className="space-y-6">
             <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
               <h2 className="text-xl font-bold text-galaxy-400 mb-6">Hero Editor</h2>

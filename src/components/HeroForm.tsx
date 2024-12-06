@@ -14,9 +14,13 @@ interface HeroFormProps {
 export function HeroForm({ rarity, stars, level, onChange }: HeroFormProps) {
   return (
     <div className="bg-container-gradient backdrop-blur-sm rounded-xl p-6 border border-galaxy-700 shadow-neon">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Change to flex container with column/row responsive layout */}
+      <div className="flex flex-col space-y-6">
+        {/* Rarity Section */}
         <div>
-          <label className="block text-sm font-medium text-galaxy-50 mb-2">Rarity</label>
+          <label className="block text-sm font-medium text-galaxy-50 mb-2">
+            Rarity
+          </label>
           <div className="grid grid-cols-3 gap-2">
             {[0, 1, 2].map((r) => (
               <button
@@ -28,15 +32,24 @@ export function HeroForm({ rarity, stars, level, onChange }: HeroFormProps) {
                     : 'bg-container-gradient border-galaxy-700 text-galaxy-200 hover:bg-galaxy-800/50'
                 }`}
               >
-                <Crown className={`w-4 h-4 ${rarity === r ? 'text-galaxy-400' : 'text-galaxy-200'}`} />
-                <span className="text-sm font-medium">{RARITY_NAMES[r as Rarity]}</span>
+                <Crown
+                  className={`w-4 h-4 ${
+                    rarity === r ? 'text-galaxy-400' : 'text-galaxy-200'
+                  }`}
+                />
+                <span className="text-sm font-medium">
+                  {RARITY_NAMES[r as Rarity]}
+                </span>
               </button>
             ))}
           </div>
         </div>
 
+        {/* Stars Section */}
         <div>
-          <label className="block text-sm font-medium text-galaxy-50 mb-2">Stars</label>
+          <label className="block text-sm font-medium text-galaxy-50 mb-2">
+            Stars
+          </label>
           <div className="grid grid-cols-5 gap-2">
             {Array.from({ length: 10 }, (_, i) => i + 1).map((s) => (
               <button
@@ -49,7 +62,9 @@ export function HeroForm({ rarity, stars, level, onChange }: HeroFormProps) {
                 }`}
               >
                 <Star
-                  className={`w-4 h-4 ${stars === s ? 'text-galaxy-400' : 'text-galaxy-200'}`}
+                  className={`w-4 h-4 ${
+                    stars === s ? 'text-galaxy-400' : 'text-galaxy-200'
+                  }`}
                   fill={stars === s ? 'currentColor' : 'none'}
                 />
                 <span className="text-sm font-medium">{s}</span>
@@ -58,10 +73,13 @@ export function HeroForm({ rarity, stars, level, onChange }: HeroFormProps) {
           </div>
         </div>
 
-        <LevelInput 
-          level={level} 
-          onChange={(newLevel) => onChange({ level: newLevel })} 
-        />
+        {/* Level Input Section */}
+        <div>
+          <LevelInput
+            level={level}
+            onChange={(newLevel) => onChange({ level: newLevel })}
+          />
+        </div>
       </div>
     </div>
   );
