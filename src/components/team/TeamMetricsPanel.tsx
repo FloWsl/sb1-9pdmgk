@@ -26,7 +26,7 @@ export function TeamMetricsPanel({ metrics }: TeamMetricsPanelProps) {
       <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
         <div className="flex items-center gap-2 text-galaxy-300 mb-4">
           <Coins className="w-5 h-5" />
-          <h3 className="font-semibold">Resources</h3>
+          <h3 className="font-semibold">Resources Spent</h3>
         </div>
         <div className="space-y-2">
           <div>
