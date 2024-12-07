@@ -20,7 +20,23 @@ export function Navigation() {
             <span className="text-white font-bold text-lg">Gotchi Stats</span>
           </div>
 
+
+      
           <div className="flex gap-4">
+
+                        <Link
+              to="/hero"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                isHeroRoute
+                  ? 'bg-button-gradient text-white shadow-button'
+                  : 'text-galaxy-300 hover:bg-galaxy-800/50'
+              }`}
+            >
+              <Calculator className="w-4 h-4" />
+              <span>Hero</span>
+            </Link>
+
+            
             <Link
               to="/"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
@@ -33,17 +49,6 @@ export function Navigation() {
               <span>Team</span>
             </Link>
 
-            <Link
-              to="/hero"
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                isHeroRoute
-                  ? 'bg-button-gradient text-white shadow-button'
-                  : 'text-galaxy-300 hover:bg-galaxy-800/50'
-              }`}
-            >
-              <Calculator className="w-4 h-4" />
-              <span>Hero</span>
-            </Link>
           </div>
         </div>
       </div>
