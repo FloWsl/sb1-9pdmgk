@@ -14,24 +14,31 @@ export function IndividualCalculator() {
       <div className="max-w-5xl mx-auto px-4 py-12">
         <div className="flex flex-col items-center mb-12">
           <h1 className="text-4xl font-bold text-white text-center mb-2">
-            Individual Calculator
+            Hero Calculator
           </h1>
           <div className="flex items-center gap-2 text-galaxy-300">
             <Calculator className="w-5 h-5" />
-            <span className="text-lg">Hero Calculator</span>
+            <span className="text-lg">Individual Hero Analysis</span>
           </div>
         </div>
 
-        <HeroForm
-          rarity={rarity}
-          stars={stars}
-          level={level}
-          onChange={setValues}
-        />
+        <div className="grid lg:grid-cols-[1fr,2fr] gap-8">
+          <div>
+            <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
+              <h2 className="text-xl font-bold text-galaxy-400 mb-6">Hero Details</h2>
+              <HeroForm
+                rarity={rarity}
+                stars={stars}
+                level={level}
+                onChange={setValues}
+              />
+            </div>
+          </div>
 
-        <div className="space-y-4 mt-6">
-          <PowerDisplay stats={stats} />
-          <ResourceDisplay stats={stats} />
+          <div className="space-y-6">
+            <PowerDisplay stats={stats} />
+            <ResourceDisplay stats={stats} />
+          </div>
         </div>
       </div>
     </div>

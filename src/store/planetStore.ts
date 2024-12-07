@@ -1,49 +1,55 @@
 import { create } from 'zustand';
 import type { ConstellationData } from '../data/constellations';
-import type { PlanetCalculation } from '../lib/types/planet';
-import { calculatePlanetReturns } from '../lib/calculations/planet';
+import type { PlanetAnalysis } from '../lib/types/planet';
+import { analyzePlanetRequirements } from '../lib/calculations/planet';
 import { useTeamStore } from './teamStore';
+import { useCalculatorStore } from './calculatorStore';
 
 interface PlanetStore {
   selectedConstellation: ConstellationData | null;
-  planetCalculations: PlanetCalculation | null;
+  planetAnalysis: PlanetAnalysis | null;
   selectConstellation: (constellation: ConstellationData) => void;
-  calculateReturns: () => void;
+  updateAnalysis: () => void;
 }
 
 export const usePlanetStore = create<PlanetStore>((set, get) => ({
   selectedConstellation: null,
-  planetCalculations: null,
+  planetAnalysis: null,
 
   selectConstellation: (constellation) => {
     set({ selectedConstellation: constellation });
-    get().calculateReturns();
+    get().updateAnalysis();
   },
 
-  calculateReturns: () => {
+  updateAnalysis: () => {
     const { selectedConstellation } = get();
     if (!selectedConstellation) return;
 
-    const activeHeroes = useTeamStore.getState().heroes.filter(
-      (hero): hero is NonNullable<typeof hero> => hero !== null
-    );
+    // Get power from either team or individual calculator
+    const teamPower = useTeamStore.getState().heroes
+      .filter((hero): hero is NonNullable<typeof hero> => hero !== null)
+      .reduce((sum, hero) => sum + hero.metrics.currentPower, 0);
     
-    const teamPower = activeHeroes.reduce(
-      (sum, hero) => sum + hero.metrics.currentPower,
-      0
-    );
+    const individualPower = useCalculatorStore.getState().currentPower;
+    
+    const totalPower = teamPower || individualPower;
 
-    const calculations = calculatePlanetReturns(
-      teamPower,
+    const analysis = analyzePlanetRequirements(
+      totalPower,
       selectedConstellation
     );
     
-    set({ planetCalculations: calculations });
+    set({ planetAnalysis: analysis });
   },
 }));
 
-// Subscribe to team changes to recalculate returns
+// Subscribe to both team and calculator changes
 useTeamStore.subscribe(
   (state) => state.heroes,
-  () => usePlanetStore.getState().calculateReturns()
+  () => usePlanetStore.getState().updateAnalysis()
+);
+
+useCalculatorStore.subscribe(
+  (state) => state.currentPower,
+  () => usePlanetStore.getState().updateAnalysis()
 );

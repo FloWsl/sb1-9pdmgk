@@ -15,13 +15,13 @@ const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: IndividualCalculator,
-});
-
-const teamRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/team',
   component: TeamCalculator,
 });
 
-export const routeTree = rootRoute.addChildren([indexRoute, teamRoute]);
+const heroRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/hero',
+  component: IndividualCalculator,
+});
+
+export const routeTree = rootRoute.addChildren([indexRoute, heroRoute]);

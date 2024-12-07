@@ -4,8 +4,8 @@ import { Calculator, Users } from 'lucide-react';
 
 export function Navigation() {
   const matchRoute = useMatchRoute();
-  const isHomeRoute = matchRoute({ to: '/' });
-  const isTeamRoute = matchRoute({ to: '/team' });
+  const isTeamRoute = matchRoute({ to: '/' });
+  const isHeroRoute = matchRoute({ to: '/hero' });
 
   return (
     <nav className="fixed top-0 left-0 right-0 h-15 bg-galaxy-900/95 backdrop-blur-sm border-b border-galaxy-700/50 z-50">
@@ -24,18 +24,6 @@ export function Navigation() {
             <Link
               to="/"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                isHomeRoute
-                  ? 'bg-button-gradient text-white shadow-button'
-                  : 'text-galaxy-300 hover:bg-galaxy-800/50'
-              }`}
-            >
-              <Calculator className="w-4 h-4" />
-              <span>Hero</span>
-            </Link>
-
-            <Link
-              to="/team"
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
                 isTeamRoute
                   ? 'bg-button-gradient text-white shadow-button'
                   : 'text-galaxy-300 hover:bg-galaxy-800/50'
@@ -43,6 +31,18 @@ export function Navigation() {
             >
               <Users className="w-4 h-4" />
               <span>Team</span>
+            </Link>
+
+            <Link
+              to="/hero"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                isHeroRoute
+                  ? 'bg-button-gradient text-white shadow-button'
+                  : 'text-galaxy-300 hover:bg-galaxy-800/50'
+              }`}
+            >
+              <Calculator className="w-4 h-4" />
+              <span>Hero</span>
             </Link>
           </div>
         </div>

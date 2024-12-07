@@ -1,11 +1,9 @@
 import React from 'react';
 import { Users, Calculator, Map } from 'lucide-react';
 
-export type TabId = 'composition' | 'statistics' | 'planets';
-
 interface TabNavigationProps {
-  activeTab: TabId;
-  onTabChange: (tab: TabId) => void;
+  activeTab: string;
+  onTabChange: (tab: string) => void;
   teamSize: number;
 }
 
@@ -41,11 +39,8 @@ export function TabNavigation({ activeTab, onTabChange, teamSize }: TabNavigatio
 
       <button
         onClick={() => onTabChange('planets')}
-        disabled={teamSize === 0}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-          teamSize === 0
-            ? 'bg-galaxy-800/30 text-galaxy-600 cursor-not-allowed'
-            : activeTab === 'planets'
+          activeTab === 'planets'
             ? 'bg-button-gradient text-white shadow-button'
             : 'text-galaxy-300 hover:bg-galaxy-800/50'
         }`}

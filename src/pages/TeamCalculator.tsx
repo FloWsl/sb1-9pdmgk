@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Users, Plus } from 'lucide-react';
+import { Users, Plus, Calculator } from 'lucide-react';
 import { HeroForm } from '../components/HeroForm';
 import { TeamMetricsPanel } from '../components/team/TeamMetricsPanel';
 import { HeroGrid } from '../components/team/HeroGrid';
 import { ConstellationSelector } from '../components/planet/ConstellationSelector';
-import { PlanetReturnsDisplay } from '../components/planet/PlanetReturnsDisplay';
-import { TabNavigation, TabId } from '../components/team/TabNavigation';
+import { UnifiedPlanetDisplay } from '../components/planet/UnifiedPlanetDisplay';
+import { UnifiedPowerInput } from '../components/planet/UnifiedPowerInput';
+import { TabNavigation } from '../components/team/TabNavigation';
 import { useCalculatorStore } from '../store/calculatorStore';
 import { useTeamStore } from '../store/teamStore';
 import { calculateTeamMetrics } from '../lib/calculations/team';
 
 export function TeamCalculator() {
-  const [activeTab, setActiveTab] = useState<TabId>('composition');
+  const [activeTab, setActiveTab] = useState('composition');
   const { rarity, stars, level, ...stats } = useCalculatorStore();
   const setValues = useCalculatorStore((state) => state.setValues);
   const reset = useCalculatorStore((state) => state.reset);
@@ -79,8 +80,13 @@ export function TeamCalculator() {
       case 'planets':
         return (
           <div className="space-y-6 animate-fadeIn">
-            <ConstellationSelector />
-            <PlanetReturnsDisplay />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="space-y-6">
+                <UnifiedPowerInput />
+                <ConstellationSelector />
+              </div>
+              <UnifiedPlanetDisplay />
+            </div>
           </div>
         );
       
@@ -112,7 +118,7 @@ export function TeamCalculator() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr,2fr] gap-8 ">
+        <div className="grid lg:grid-cols-[1fr,2fr] gap-8">
           <div className="space-y-6">
             <div className="bg-galaxy-900/50 backdrop-blur-sm rounded-xl p-6 border border-galaxy-700/50 shadow-neon">
               <h2 className="text-xl font-bold text-galaxy-400 mb-6">Hero Editor</h2>
