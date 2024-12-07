@@ -68,7 +68,7 @@ export function UnifiedPlanetDisplay() {
           </div>
 
           <div>
-            <div className="text-sm text-galaxy-400">Time to Clear</div>
+            <div className="text-sm text-galaxy-400">Challenge duration</div>
             <div className="text-xl font-bold text-galaxy-100">
               {timeDisplay}
             </div>
