@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Calculator, Map } from 'lucide-react';
+import { Users, Calculator, Map, AlertCircle } from 'lucide-react';
 
 interface TabNavigationProps {
   activeTab: string;
@@ -24,17 +24,22 @@ export function TabNavigation({ activeTab, onTabChange, teamSize }: TabNavigatio
 
       <button
         onClick={() => onTabChange('statistics')}
-        disabled={teamSize === 0}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-          teamSize === 0
-            ? 'bg-galaxy-800/30 text-galaxy-600 cursor-not-allowed'
-            : activeTab === 'statistics'
+          activeTab === 'statistics'
             ? 'bg-button-gradient text-white shadow-button'
             : 'text-galaxy-300 hover:bg-galaxy-800/50'
         }`}
       >
         <Calculator className="w-5 h-5" />
         <span>Statistics</span>
+        {teamSize === 0 && (
+          <div className="relative group">
+            <AlertCircle className="w-4 h-4 text-yellow-400" />
+            <div className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 w-48 p-2 bg-galaxy-800 text-xs text-galaxy-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              Add heroes to your team to see statistics
+            </div>
+          </div>
+        )}
       </button>
 
       <button

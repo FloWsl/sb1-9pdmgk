@@ -4,8 +4,8 @@ import { Calculator, Users } from 'lucide-react';
 
 export function Navigation() {
   const matchRoute = useMatchRoute();
-  const isTeamRoute = matchRoute({ to: '/' });
-  const isHeroRoute = matchRoute({ to: '/hero' });
+  const isTeamRoute = matchRoute({ to: '/team' });
+  const isHeroRoute = matchRoute({ to: '/' });
 
   return (
     <nav className="fixed top-0 left-0 right-0 h-15 bg-galaxy-900/95 backdrop-blur-sm border-b border-galaxy-700/50 z-50">
@@ -20,12 +20,9 @@ export function Navigation() {
             <span className="text-white font-bold text-lg">Gotchi Stats</span>
           </div>
 
-
-      
           <div className="flex gap-4">
-
-                        <Link
-              to="/hero"
+            <Link
+              to="/"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
                 isHeroRoute
                   ? 'bg-button-gradient text-white shadow-button'
@@ -36,9 +33,8 @@ export function Navigation() {
               <span>Hero</span>
             </Link>
 
-            
             <Link
-              to="/"
+              to="/team"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
                 isTeamRoute
                   ? 'bg-button-gradient text-white shadow-button'
@@ -48,7 +44,6 @@ export function Navigation() {
               <Users className="w-4 h-4" />
               <span>Team</span>
             </Link>
-
           </div>
         </div>
       </div>
