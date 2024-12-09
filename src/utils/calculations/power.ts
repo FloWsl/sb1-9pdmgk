@@ -5,7 +5,7 @@ export function calculateStarBonus(stars: number, rarity: number): number {
   const starBonuses = {
     0: 2.5, // Rare
     1: 3.0, // Epic
-    2: 3.5  // Legendary
+    2: 3.75  // Legendary
   };
     
   return (stars - 1) * starBonuses[rarity];
